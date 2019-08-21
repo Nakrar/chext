@@ -1,0 +1,21 @@
+{
+  "name": "ChExt",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Opens images full-screen when you open their page in a new tab.",
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}

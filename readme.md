@@ -1,0 +1,1 @@
+Chrome extensions that opens images for imageboards such as sankaku_complex via xpath.
