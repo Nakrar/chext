@@ -12,7 +12,7 @@ chrome.extension.sendMessage({}, function (response) {
                 null
             ).singleNodeValue;
             if (xpathMatch) {
-                window.location = xpathMatch.value;
+                window.location.href = xpathMatch.value;
                 return
             }
         }
