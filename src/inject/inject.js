@@ -1,4 +1,4 @@
-chrome.extension.sendMessage({}, function (response) {
+chrome.extension.sendMessage({href: window.location.href}, function (response) {
     handler = () => {
         if (!response.xPathList || !response.xPathList.length) {
             alert("ChExt: please configure xPathList");
@@ -12,16 +12,17 @@ chrome.extension.sendMessage({}, function (response) {
                 null
             ).singleNodeValue;
             if (xpathMatch) {
+                window.history.pushState({}, "", window.location.href )
                 window.location.href = xpathMatch.value;
                 return
             }
         }
-//            }
     };
 
-    if (document.readyState == 'loading') {
-        document.addEventListener("DOMContentLoaded", handler);
+    if (document.readyState == 'complete') {
+        document.onload(handler);
     } else {
-        handler()
+        handler(response)
     }
+
 });

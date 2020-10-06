@@ -9,9 +9,9 @@ proceededTabs = new Set();
 pruneCounter = 0;
 
 chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
-    console.log('porcess message')
+    console.log('process message')
     if (proceededTabs.has(sender.tab.id)) {
-        console.log('already open')
+        console.log('already opened')
         return
     }
 
@@ -26,6 +26,5 @@ chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
         console.log('became ${proceededTabs.size}')
     }
     pruneCounter++;
-
     sendResponse({xPathList});
 });
